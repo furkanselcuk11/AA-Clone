@@ -7,12 +7,10 @@ public class smallCircle : MonoBehaviour
     Rigidbody2D physics;
     public float speed;
     bool moveControl=false;
-
-    GameObject gameControllerObject;    // obje deðiþkeni tanýmla
+    
     void Start()
     {
         physics = GetComponent<Rigidbody2D>();  // Kodun bulunduðu objenin rigibody kompenentine eriþ
-        gameControllerObject = GameObject.FindGameObjectWithTag("GameController");  // Belirtilen tag ismini bulup deðiþkene ata
     }    
      void FixedUpdate()
     {
@@ -31,8 +29,8 @@ public class smallCircle : MonoBehaviour
         }
         if (collision.tag == "smallcircle")
         {
-            gameControllerObject.GetComponent<gameController>().gameOver(); 
-            // Eðer smallcircle isimli taga temas ederse GameContoller objesinin 'gameContoller' kodunun 'gameOver' fonk. çalýþsýn
+            gameController.instance.gameOver();
+            // Eðer smallcircle isimli taga temas ederse 'gameContoller' kodunun 'gameOver' fonk. çalýþsýn
         }
     }
 }
