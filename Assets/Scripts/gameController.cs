@@ -8,13 +8,13 @@ public class gameController : MonoBehaviour
 {
     public static gameController instance;
 
-    GameObject turningCircleObj;
-    GameObject mainCircleObj;
+    GameObject turningCircleObj;    // Oyun sahnesinde levelin yazýlý olduðu döner çember
+    GameObject mainCircleObj;   // Atýlacak çucuklarýn olduðu çember
     public Animator animator;
-    public Text turningCircleText; // Çember içinde  anki level texti
+    public Text turningCircleText; // Çember içinde yazýlý olan textler - Kaç adet çubuk kaldýðýný gösterir
 
     public Text one, two, three;
-    public int totalCircle;
+    public int totalCircle; // Toplam çubuklar
 
     bool gameOverControl = true;
 
@@ -84,8 +84,9 @@ public class gameController : MonoBehaviour
 
     IEnumerator nextLevel()
     {
+        // Bir sonraki levele geçiþte - atýlacak çubuk kalmadýðýnda
         turningCircleObj.GetComponent<turningController>().enabled = false; // Çember döndürme kompenetine eriþ ve çalýþmasýný durdur
-        mainCircleObj.GetComponent<mainCircle>().enabled = false;   // Ok atma kompenetine eriþ ve çalýþmasýný durdur
+        mainCircleObj.GetComponent<mainCircle>().enabled = false;   // Çubuk atma kompenetine eriþ ve çalýþmasýný durdur
         yield return new WaitForSeconds(0.3f);
 
         if (gameOverControl)    // Eðer oyunda yanmamýþsan yeni levele geç
@@ -98,7 +99,7 @@ public class gameController : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);   // Þuan ki levelin 1 fazlasý olan leveli aç
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);   // Bir sonraki levele geç
             }
             
         }        

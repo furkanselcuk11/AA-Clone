@@ -12,6 +12,6 @@ public class turningController : MonoBehaviour
     
     void Update()
     {
-        transform.Rotate(0, 0, speed * Time.deltaTime); // Obejeyi Z ekseninde döndürür 
+        transform.Rotate(0, 0, speed * Time.deltaTime); // Nesneyi Z ekseninde speed hýzý kadar döndürür 
     }
 }

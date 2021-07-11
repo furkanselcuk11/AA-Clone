@@ -7,15 +7,16 @@ public class mainCircle : MonoBehaviour
     public GameObject smallCircle;
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))   // Mousun sol tuþuna týklandýðýnda çalýþ
+        if (Input.GetButtonDown("Fire1"))   // Input.GetButtonDown("0")
         {
-            createSmallCircle();
+            createSmallCircle(); // Mousun sol tuþuna týklandýðýnda çalýþ
         }
     }
 
     void createSmallCircle()
     {
-        Instantiate(smallCircle, transform.position, transform.rotation);   // Her çalýþtýðýnda bir yeni obje yarat    
-        gameController.instance.smallCircleTextShow();  // 'gameController' koduna eriþip smallCircleTextShow fonk. çaðrýlýr
+        Instantiate(smallCircle, transform.position, transform.rotation);   // Her çalýþtýðýnda bir yeni "smallCircle" nesnesi yarat    
+        gameController.instance.smallCircleTextShow();  // 'gameController' koduna eriþip "smallCircleTextShow" fonk. çaðrýlýr
+        // Oyun ekranýndaki 3 adet circle içine eklenecek olan sayýlar
     }
 }

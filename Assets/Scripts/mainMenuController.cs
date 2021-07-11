@@ -7,8 +7,8 @@ public class mainMenuController : MonoBehaviour
 {
     public void gameStart()
     {
-        int loadLevel = PlayerPrefs.GetInt("load");
-        if (loadLevel == 0)
+        int loadLevel = PlayerPrefs.GetInt("load"); // Sahnedeki level kaçsa o leveli "loadLevel" deðiþkenine atar
+        if (loadLevel == 0) // Eðer kayýtlý level 0 ise
         {
             SceneManager.LoadScene(loadLevel+1); // Eðer daha önce kayýtlý level yoksa 1. leveli açar
         }
@@ -20,11 +20,10 @@ public class mainMenuController : MonoBehaviour
     }
     public void gameDelete()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();    // MainMenu'de Fýfýrla butonuna basýnca kayýtlý olan tüm verileri siler
     }
     public void gameExit()
     {
-        Debug.Log("Çýktý");
-        Application.Quit();
+        Application.Quit(); //  Oyundan çýkýþ yapar
     }
 }

@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class smallCircle : MonoBehaviour
 {
-    Rigidbody2D physics;
-    public float speed;
+    Rigidbody2D rb;
+    public float speed; // Fýrlatýlan çubuðun hýzý
     bool moveControl=false;
     
     void Start()
     {
-        physics = GetComponent<Rigidbody2D>();  // Kodun bulunduðu objenin rigibody kompenentine eriþ
+        rb = GetComponent<Rigidbody2D>();  // Kodun bulunduðu objenin rigibody kompenentine eriþ
     }    
      void FixedUpdate()
     {
         if (!moveControl)
-        {
-            physics.MovePosition(physics.position + Vector2.up * speed * Time.deltaTime);   // Obje ileri doðru hareket eder
+        {   // Nesne ileri doðru hareket eder
+            //rb.MovePosition(rb.position + Vector2.up * speed * Time.deltaTime);   // 1.Yol
+            transform.Translate(0, speed * Time.fixedDeltaTime,0); // 2. Yol
         }        
     }
 
@@ -24,13 +25,13 @@ public class smallCircle : MonoBehaviour
     {
         if(collision.tag== "turningcircle")
         {
-            transform.SetParent(collision.transform);   // Çarpýlan objenin çocuðu olur
+            transform.SetParent(collision.transform);   // Çarpýlan nesnenin alt çocuðu olur ve onunla birlikte döner
             moveControl = true;
         }
         if (collision.tag == "smallcircle")
         {
-            gameController.instance.gameOver();
-            // Eðer smallcircle isimli taga temas ederse 'gameContoller' kodunun 'gameOver' fonk. çalýþsýn
+            gameController.instance.gameOver(); 
+            // Eðer "smallCircle" nesnesi baþka bir "smallCircle" taglý nesneye çarparsa "gameOver" fonk. çalýþýr
         }
     }
 }
